@@ -22,7 +22,7 @@ app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("layout", "./layouts/layout");
 
-app.get("", (req, res)=>{
+app.get("/", (req, res)=>{
   res.render("index", {
       title: "Home page"
   })

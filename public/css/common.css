@@ -1,0 +1,9 @@
+.btn {
+    float:left;
+}
+
+.btn-primary {
+    border: 5px solid var(--primary-color);
+    background-color: var(--primary-color);
+    padding: 10px;
+}

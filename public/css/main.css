@@ -1,0 +1,123 @@
+:root {
+    --primary-color: #01b0d3;
+    --secondary-color: ;
+    --tertiary-color: ;
+    --accent-color1: ;
+    --accent-color2: ;
+    --dark-color: ;
+    --light-color: ;
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+li {
+    list-style-type: none;
+}
+
+body {
+    background-image: url('/images/site/checkerboard.jpg');
+    background-size: 25%;
+    font-family: "Roboto", sans-serif, Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+}
+
+.page-wrapper {
+    width: 980px;
+    margin: 0 auto;
+    margin-top: 25px;
+    background-color: var(--white-color);
+    border: 5px solid var(--primary-color);
+    border-radius: 10px;        
+}
+header {
+    padding: 15px;
+}
+.header-top {
+    display: flex;
+    justify-content: flex-end;    
+}
+.header-top .logo {    
+    font-size: 2.25rem;
+    font-weight: bolder;
+    padding-top: 15px;
+}
+.account-links {
+    align-content: end;
+}
+
+.header-top div {
+    flex-grow: 4;
+}
+.navigation {
+    margin-top:15px;
+    background-color: var(--black-color);
+}
+.navigation ul {
+    display: flex;
+    justify-content:space-around;
+}
+.navigation li {
+    text-align: center;
+}
+.navigation a {
+    display: block;
+    color: var(--white-color) !important;
+    text-decoration: none;
+    padding: 10px;
+}
+
+main {
+    padding: 15px;
+}
+
+h1 {
+    font-size: 1.85rem;
+}
+
+.hero {
+    display: flex;
+    height: 280px;    
+    background: url('/images/vehicles/delorean.jpg') no-repeat center;
+}
+
+.hero-caption {
+    width: 250px;
+    margin-top: 25px;
+    margin-left: 50px;
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 15px 25px;
+}
+
+.hero h2 {
+    
+}
+
+.hero a {
+    font-weight: bolder;
+    text-decoration: none;
+    color: var(--black-color);
+    text-align: center;
+}
+
+.home-features {
+    display: flex;
+}
+
+.home-column {
+    flex-basis: 50%;
+}
+
+.feature-blocks {
+    display: flex;     
+    flex-direction: row;    
+}
+
+.featured-item {
+    flex-basis: 100%;
+}

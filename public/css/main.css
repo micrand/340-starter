@@ -140,9 +140,11 @@ h1 {
     
 }
 .reviews-block ul {
+    margin-top: 25px;
     margin-left: 20px;
 }
 .reviews-block ul li {
+    padding: 15px;
     list-style-type: square;    
 }
 

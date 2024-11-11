@@ -107,6 +107,7 @@ h1 {
 
 .home-features {
     display: flex;
+    margin-top:25px;
 }
 
 .home-column {
@@ -120,4 +121,34 @@ h1 {
 
 .featured-item {
     flex-basis: 100%;
+}
+.reviews-block ul {
+    margin-left: 20px;
+}
+.reviews-block ul li {
+    list-style-type: square;    
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mt-25 {
+    margin-top: 25px;
+}
+
+@media screen and (max-width:768px) {
+    .page-wrapper {
+        width: 100%;
+    }
+    header {
+        padding:0;
+    }
+    .home-features {
+        flex-direction: column;
+        border: 1px solid red;
+    }
+    footer {
+        text-align: center;
+    }
 }

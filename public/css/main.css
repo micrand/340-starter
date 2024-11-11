@@ -107,20 +107,32 @@ h1 {
 
 .home-features {
     display: flex;
-    margin-top:25px;
 }
 
 .home-column {
     flex-basis: 50%;
 }
 
-.feature-blocks {
-    display: flex;     
-    flex-direction: row;    
+.feature-block {
+    display: grid;     
+    grid-template-columns: 50% 50%;    
 }
 
-.featured-item {
-    flex-basis: 100%;
+.featured-item {    
+    margin-right: 15px;
+    text-align: center;
+    grid-auto-flow: column;
+}
+.item-wrapper {
+    display: flex;
+    justify-content: center;;
+    background-color: var(--primary-color);
+    padding: 15px;
+}
+.item-wrapper a {    
+    text-align: center;
+    color: var(--black-color);
+    text-decoration: none;
 }
 .reviews-block ul {
     margin-left: 20px;
@@ -144,9 +156,19 @@ h1 {
     header {
         padding:0;
     }
+    h1 {
+        padding-left: 25px;
+        text-align: left;
+    }
+    .hero {
+        background-position: 120px center;
+        background-size: 240px;
+    }
+    .hero-caption {
+        margin-left: 0 !important;
+    }
     .home-features {
-        flex-direction: column;
-        border: 1px solid red;
+        flex-direction: column;        
     }
     footer {
         text-align: center;

@@ -11,6 +11,9 @@ const app = express()
 const static = require("./routes/static")
 var expressLayouts = require('express-ejs-layouts');
 var path = require("path");
+const baseController = require("./controllers/BaseController");
+const inventoryRoute = require("./routes/inventoryRoute")
+
 
 
 /* ***********************
@@ -20,13 +23,27 @@ app.use(static)
 
 app.use(expressLayouts);
 app.set("view engine", "ejs");
-app.set("layout", "./layouts/layout");
+app.set("layout", "./layouts/layout")
 
-app.get("/", (req, res)=>{
-  res.render("index", {
-      title: "Home page"
+app.get("/", baseController.buildHome)
+app.use("/inv", inventoryRoute)
+app.use(async( err, req, res, next) => {
+  let nav = await utilities.getNav()
+  // console.log(`Error at ${req.originalUrl} ! ${err.message}`)
+
+  res.render('errors/error', {
+    title: res.status || 'Server Error',
+    message: err.message,
+    nav
   })
-});
+
+
+
+})
+
+app.use(async (req, res, next) => {
+  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
+})
 
 app.get("/about", (req, res) => {
   res.render("about", {

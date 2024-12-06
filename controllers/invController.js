@@ -2,12 +2,12 @@ const invModel = require('../models/inventory-model')
 const utilities = require('../utilities/')
 
 
-const invCont = {}
+const inventoryController = {}
 
 /**
  * Build inventory by classification view
  */
-invCont.buildByClassificationId = async function(req, res, next){
+inventoryController.buildByClassificationId = async function(req, res, next){
 
     const classification_id = req.params.classificationId
     const data = await invModel.getInventoryByClassificationId(classification_id)
@@ -24,5 +24,16 @@ invCont.buildByClassificationId = async function(req, res, next){
 
 }
 
+inventoryController.buildVehicleDetailsById = async function(req, res, next){
+    const vehicle_id = req.params.vehicleId
+    const detail = 'Vehicle detail content'
+    let nav = await utilities.getNav()
+    res.render('./inventory/detail', {
+        title: 'Vehicle detail',
+        nav,
+        detail
+    })
+}
 
-module.exports = invCont
+
+module.exports = inventoryController

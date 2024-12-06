@@ -13,7 +13,10 @@ var expressLayouts = require('express-ejs-layouts');
 var path = require("path");
 const baseController = require("./controllers/BaseController");
 const inventoryRoute = require("./routes/inventoryRoute")
-
+const accountRoute = require("./routes/accountRoute")
+const session = require("express-session")
+const pool = require('./database/')
+const utilities = require('./utilities/')
 
 
 /* ***********************
@@ -25,8 +28,39 @@ app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("layout", "./layouts/layout")
 
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(session({
+  store: new (require('connect-pg-simple')(session))({
+    createTableIfMissing: true,
+    pool,
+  }),
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true,
+  name: 'sessionId',
+}))
+
+// Express Messages Middleware
+app.use(require('connect-flash')())
+app.use(function(req, res, next){
+  res.locals.messages = require('express-messages')(req, res)
+  next()
+})
+
+
+
 app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
+app.use("/account", accountRoute)
+
+
+app.use(async (req, res, next) => {
+  next({status: 404, message: 'Congrats! You broke it...'})
+})
+
 app.use(async( err, req, res, next) => {
   let nav = await utilities.getNav()
   // console.log(`Error at ${req.originalUrl} ! ${err.message}`)
@@ -37,19 +71,15 @@ app.use(async( err, req, res, next) => {
     nav
   })
 
-
-
 })
 
-app.use(async (req, res, next) => {
-  next({status: 404, message: 'Sorry, we appear to have lost that page.'})
-})
 
-app.get("/about", (req, res) => {
-  res.render("about", {
+// app.get("/about", (req, res) => {
+//   res.render("about", {
       
-  });
-});
+//   });
+// });
+
 
 //app.set("views", path.join(__dirname, "views"));
 
@@ -57,6 +87,7 @@ app.get("/about", (req, res) => {
 
 //app.set('layout extractScripts', true)
 //app.set('layout extractStyles', true)
+
 
 
 /* ***********************

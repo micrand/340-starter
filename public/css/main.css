@@ -15,10 +15,13 @@
     padding:0;
     box-sizing: border-box;
 }
+
 li {
     list-style-type: none;
 }
-
+a {
+    text-decoration: none;
+}
 body {
     background-image: url('/images/site/checkerboard.jpg');
     background-size: 25%;
@@ -146,6 +149,43 @@ h1 {
 .reviews-block ul li {
     padding: 15px;
     list-style-type: square;    
+}
+
+/* Vehicles grid items */
+ul#inv-display {
+    display: grid;
+    grid-template-columns: auto auto auto;    
+    justify-content: space-around;
+}
+
+.vehicle-item {    
+    border: 1px solid var(--black-color);
+    border-radius: 5px;
+    justify-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.vehicle-item img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.vehicle-item a {
+    font-size: 0.875rem;    
+    font-weight: 500;
+    color: var(--black-color);
+}
+
+.namePrice {
+    padding-top: 10px;
+}
+
+.namePrice h2 {
+    padding-top:10px;
+}
+.namePrice span {
+    display: block;
+    text-align: center;
 }
 
 .mt-50 {

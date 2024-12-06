@@ -1,7 +1,8 @@
 const express = require('express')
 const router = new express.Router()
-const invController = require('../controllers/invController')
+const inventoryController = require('../controllers/invController')
 
-router.get('/type/:classificationId', invController.buildByClassificationId)
+router.get('/type/:classificationId', inventoryController.buildByClassificationId)
+router.get('/detail/:vehicleId', inventoryController.buildVehicleDetailsById)
 
 module.exports = router

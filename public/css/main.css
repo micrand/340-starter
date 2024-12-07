@@ -74,12 +74,9 @@ header {
     padding: 10px;
 }
 
-main {
-    padding: 15px;
-}
-
 h1 {
     font-size: 1.85rem;
+    margin-left: 15px;
 }
 
 .hero {
@@ -196,6 +193,43 @@ ul#inv-display {
     margin-top: 25px;
 }
 
+/* vehicle detail view*/
+.detail-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+.detail-column {
+    flex: 2;
+    margin: 15px;
+}
+.detail-column-2 {
+    flex: 3;
+}
+.detail-photo {
+   margin-left: 25px;
+   margin-right: 25px;
+}
+.detail-photo img {
+    width: 100%
+}
+.detail-info {
+    
+}
+
+.detail-info h2 {
+    margin-bottom: 25px;
+}
+.detail-info .price {
+    margin-bottom: 25px;
+}
+.detail-info .miles, .detail-info .year {
+    margin-top: 25px;    
+}
+footer {
+    padding:15px 25px;
+}
 @media screen and (max-width:768px) {
     .page-wrapper {
         width: 100%;
@@ -205,7 +239,8 @@ ul#inv-display {
     }
     h1 {
         padding-left: 25px;
-        text-align: left;
+        text-align: center; 
+        margin-bottom: 25px;
     }
     .hero {
         background-position: 120px center;
@@ -217,8 +252,32 @@ ul#inv-display {
     .home-features {
         flex-direction: column;                
     }
+    .navigation {
+        display: none;
+    }
+    .navigation ul {
+        display: flex;
+        flex-direction: column;        
+    }
+    main {
+        margin-top: 25px;
+    }
     .reviews-block {
         margin-top: 25px;
+    }
+    ul#inv-display {
+        display: flex;
+        flex-direction: column;
+    }
+    .vehicle-item {
+        flex:1;
+        padding: 15px;
+    }
+    .detail-content {
+        flex-direction: column;
+    }
+    .detail-info {
+        padding: 25px;
     }
     footer {
         text-align: center;

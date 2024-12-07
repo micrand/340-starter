@@ -6,7 +6,7 @@ Util.getNav = async function(req, res, next) {
     let data = await invModel.getClassifications()
 
     let list = "<ul>"
-    list += `<li><a href="/" title="Home page">Home</a></li>"`
+    list += `<li><a href="/" title="Home page">Home</a></li>`
     
     data.rows.forEach((row) => {
         // console.log(row)
@@ -52,6 +52,41 @@ Util.buildClassificationGrid = async function(data){
     }
 
     return grid
+}
+
+Util.buildVehicleDetailsView = async function(data) {
+
+    let detail    
+
+    
+    try {
+
+        let vehicle_title = data.inv_make + ' ' + data.inv_model
+        detail += '<div class="detail-content">'
+        detail += '<div class="detail-photo detail-column">'
+        detail += `<img src="${data.inv_image}" loading="lazy" alt="${vehicle_title}" />`
+        detail += '</div>'
+        detail += '<div class="detail-info detail-column-2">'
+        detail += `<h2>${vehicle_title}</h2>`
+        detail += `<p class="price">Price: <span>$${new Intl.NumberFormat('en-US').format(data.inv_price)}</span></p>`
+        detail += `<p>${data.inv_description}</p>`
+        detail += `<p class="year">Year: ${data.inv_year}</p>`
+        detail += `<p class="miles">Miles: ${new Intl.NumberFormat('en-US').format(data.inv_miles)}</p>`
+        detail += '</div>'
+        detail += '</div><!--.detail-content-->'
+        detail += ''
+    }
+    catch(error){
+
+    }
+
+
+    //}
+    
+  
+    
+   
+    return detail
 }
 
 module.exports = Util

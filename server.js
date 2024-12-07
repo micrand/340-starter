@@ -66,7 +66,7 @@ app.use(async( err, req, res, next) => {
   // console.log(`Error at ${req.originalUrl} ! ${err.message}`)
 
   res.render('errors/error', {
-    title: res.status || 'Server Error',
+    title: err.status || 'Server Error',
     message: err.message,
     nav
   })

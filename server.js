@@ -52,7 +52,7 @@ app.use(function(req, res, next){
 
 //app.get("/", baseController.buildHome)
 app.get("/", utilities.handleErrors(baseController.buildHome))
-app.use("/inv", inventoryRoute)
+app.use("/inv", utilities.handleErrors(inventoryRoute))
 app.use("/account", accountRoute)
 app.get("/routeerror", utilities.handleErrors(baseController.buildError))
 

@@ -89,4 +89,14 @@ Util.buildVehicleDetailsView = async function(data) {
     return detail
 }
 
+/**
+ * Middleware for handling errors
+ * wrap other function in this for
+ * general error handling
+ * @param {*} fn 
+ * @returns 
+ * unite 3 activity
+ */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
 module.exports = Util

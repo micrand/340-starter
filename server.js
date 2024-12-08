@@ -50,24 +50,35 @@ app.use(function(req, res, next){
   next()
 })
 
-
-
-app.get("/", baseController.buildHome)
+//app.get("/", baseController.buildHome)
+app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 app.use("/account", accountRoute)
+app.get("/routeerror", utilities.handleErrors(baseController.buildError))
 
-
+/**
+ *  404 error - File not found route
+ */
 app.use(async (req, res, next) => {
-  next({status: 404, message: 'Congrats! You broke it...'})
+  next({status: 404, message: 'Congrats! You broke it...'}) //Congrats! You broke it...
 })
 
+/**
+ * Error express handling
+ */
 app.use(async( err, req, res, next) => {
   let nav = await utilities.getNav()
-  // console.log(`Error at ${req.originalUrl} ! ${err.message}`)
+  console.log(`Error at ${req.originalUrl} ! ${err.message}`)
+
+  if( err.status == 404 ){
+    message = err.message
+  }else{
+    message = "Oh no! there was a crash. Maybe try a different route?"
+  }
 
   res.render('errors/error', {
     title: err.status || 'Server Error',
-    message: err.message,
+    message,
     nav
   })
 

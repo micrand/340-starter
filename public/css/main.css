@@ -108,7 +108,9 @@ h1 {
 
 .home-features {
     display: flex;
+    margin-left: 25px;
 }
+
 
 .home-column {
     flex-basis: 50%;
@@ -117,6 +119,7 @@ h1 {
 .feature-block {
     display: grid;     
     grid-template-columns: 50% 50%;  
+    
 }
 
 .featured-item {    
